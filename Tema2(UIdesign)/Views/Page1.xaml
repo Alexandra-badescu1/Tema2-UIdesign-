@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Tema2_UIdesign_.Models"
+             xmlns:icon="clr-namespace:Tema2_UIdesign_.Resources.utility"
+             x:Class="Tema2_UIdesign_.Views.Page1"
+             Title="Page1">
+    <VerticalStackLayout BackgroundColor="Black">
+        <Grid 
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="*">
+            <Label
+                Grid.ColumnSpan="2"
+                HorizontalTextAlignment="Start"
+                Text="Good Afternoon" 
+                TextColor="AliceBlue"
+                FontFamily="FAS"
+                FontAttributes="Bold"
+                FontSize="Header"/>
+            <Grid
+                Padding="0,5,5,5"
+                Grid.Column="2"
+                >
+                <Label
+                    HorizontalTextAlignment="Start"
+                    Text="bell" FontFamily="FAR" TextColor="AliceBlue" FontSize="Medium"/>
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="clock" FontFamily="FAR" TextColor="AliceBlue" FontSize="Medium"/>
+                <Label
+                    HorizontalTextAlignment="End"
+                    Text="gear" FontFamily="FAS" TextColor="AliceBlue" FontSize="Medium"/>
+            </Grid>
+        </Grid>
+        <HorizontalStackLayout Padding="0,5,0,10">
+            <Border
+                BackgroundColor="Gray"
+            StrokeThickness="3"
+            StrokeShape="RoundRectangle 20,20,20,20"
+            >
+                <Label
+                Padding="10"
+                Text="Music"
+                    TextColor="AliceBlue"/>
+            </Border>
+            <Border 
+                BackgroundColor="Gray"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 20,20,20,20"
+                >
+                <Label 
+                Padding="10"
+                    TextColor="AliceBlue"
+                Text="Podcasts and Music"/>
+            </Border>
+        </HorizontalStackLayout>
+        <CollectionView>
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type model:Spotify}" >
+                    <model:Spotify Name ="Liked Songs"
+                                           Image="love_song.jpeg"
+                                           />
+                    <model:Spotify Name ="Discover Weekly"
+                                           Image="diacover_deely.jpg"
+                                           />
+                    <model:Spotify Name ="Your Top Song 2022"
+                                           Image="top_song.jpg"
+                                           />
+                    <model:Spotify Name ="Daily Mix (1)"
+                                           Image="daily_mix.jpg"
+                                           />
+                    <model:Spotify Name ="Zonga Music"
+                                           Image="zonga.jpg"
+                                           />
+                    <model:Spotify Name ="Zonga Music (2)"
+                                           Image="zonga_song.jpg"
+                                           />
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid 
+                        BackgroundColor="Gray"
+                        Padding="5,5,5,5"
+                    ColumnDefinitions="auto,*"
+                    RowDefinitions="auto,*">
+                        <Image 
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Source="{Binding Image}"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               />
+                        <Label
+                            Padding="3"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Text="{Binding Name}" 
+                            VerticalOptions="Center"
+                            TextColor="AntiqueWhite" 
+                             />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"  Span="2" HorizontalItemSpacing="5"></GridItemsLayout>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+        <Grid 
+            Padding="5,35"
+            ColumnDefinitions="auto,*" 
+              RowDefinitions="*,*">
+            <Image 
+                  Grid.Column="0"
+                  Grid.Row="0"
+                   Source="bon_jovi.jpg"
+                HeightRequest="100"
+                WidthRequest="100"
+              >
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="50"
+                         RadiusY="50"
+                         Center="50,50" />
+                </Image.Clip>
+            </Image>
+            <Grid Grid.Row="0"
+                  Grid.Column="1">
+                <Label 
+                 Padding="10,0,0,10"
+                Text="More like" 
+                    TextColor="AntiqueWhite"/>
+                <Label
+                    Padding="10,15"
+                Text="Bon Jovi"
+                    FontAttributes="Bold"
+                    TextColor="AntiqueWhite" FontSize="Medium"/>
+            </Grid>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
